@@ -1,6 +1,12 @@
 .page {
-    position: relative;
-    background-color: #000000;
-    margin: 0 auto;
-    padding: 45px 19px 47px;
+  position: relative;
+  background-color: #000000;
+  margin: 0 auto;
+  padding: 45px 19px 47px;
+}
+
+@media (max-width: 767px) {
+  .page {
+      padding: 28px 19px 36px;
+  }
 }

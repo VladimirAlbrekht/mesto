@@ -1,0 +1,13 @@
+
+.logo {
+  display: block;
+  max-width: 144px;
+  max-height: 33px;   
+}
+
+@media (max-width: 767px) {
+  .logo {
+    max-width: 104px;
+    max-height: 24px;
+  }
+}

@@ -3,7 +3,7 @@ let popupElement = document.querySelector('.popup');
 let EditButton = document.querySelector('.profile__edit-button');
 let CloseButton = document.querySelector('.popup__close');
 let profileName = document.querySelector('.profile__name');
-let profileJob = document.querySelector('.profile__job');
+let profileJob = document.querySelector('.profile__status');
 let SaveButton = document.querySelector('.popup__save-button');
 
 let openPopup = function(){
