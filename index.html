@@ -1,12 +1,102 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./pages/index.css">
     <title>Mesto</title>
 </head>
+
 <body>
-    
+    <div class="page">
+        <header class="header">
+            <a href="#" class="logo"><img src="./images/logo.png" alt="logo" class="logo__image"></a>
+        </header>
+        <main class="content">
+            <div class="profile">
+                <div class="profile__content">
+                    <img src="./images/avatar.jpg" alt="avatar" class="profile__avatar">
+                    <div class="profile__info">
+                        <div class="profile__heading">
+                            <p class="profile__name">Жак-Ив Кусто</p>
+                            <button class="profile__edit-button"><img src="../images/icons/pencil.svg"
+                                    alt="карандаш картинка"></button>
+                        </div>
+                        <p class="profile__job">Исследователь океана</p>
+                    </div>
+                </div>
+
+                <button class="profile__add-button">&#43;</button>
+            </div>
+            <ul class="elements">
+                <li class="element">
+                    <img src="./images/beijing.jpeg" alt="фото Пекин" class="element__image">
+                    <div class="element__info">
+                        <h2 class="element__title">Пекин - столица Китая</h2>
+                        <a href="#" class="element__like"><img src="./images/icons/heart.svg"
+                                alt="иконка сердце"></a>
+                    </div>
+                </li>
+                <li class="element">
+                    <img src="./images/qindao.jpeg" alt="фото Циндао" class="element__image">
+                    <div class="element__info">
+                        <h2 class="element__title">Циндао</h2>
+                        <a href="#" class="element__like"><img src="./images/icons/heart.svg"
+                                alt="иконка сердце"></a>
+                    </div>
+                </li>
+                <li class="element">
+                    <img src="./images/nankin.jpeg" alt="фото Нанкин" class="element__image">
+                    <div class="element__info">
+                        <h2 class="element__title">Нанкин</h2>
+                        <a href="#" class="element__like"><img src="./images/icons/heart.svg"
+                                alt="иконка сердце"></a>
+                    </div>
+                </li>
+                <li class="element">
+                    <img src="./images/shanghai.jpeg" alt="фото Шанхай" class="element__image">
+                    <div class="element__info">
+                        <h2 class="element__title">Шанхай</h2>
+                        <a href="#" class="element__like"><img src="./images/icons/heart.svg"
+                                alt="иконка сердце"></a>
+                    </div>
+                </li>
+                <li class="element">
+                    <img src="./images/rizhao.jpeg" alt="фото Жичжао" class="element__image">
+                    <div class="element__info">
+                        <h2 class="element__title">Жичжао</h2>
+                        <a href="#" class="element__like"><img src="./images/icons/heart.svg"
+                                alt="иконка сердце"></a>
+                    </div>
+                </li>
+                <li class="element">
+                    <img src="./images/guanzhou.jpeg" alt="фото Гуанчжоу" class="element__image">
+                    <div class="element__info">
+                        <h2 class="element__title">Гуанчжоу</h2>
+                        <a href="#" class="element__like"><img src="./images/icons/heart.svg"
+                                alt="иконка сердце"></a>
+                    </div>
+                </li>
+            </ul>
+        </main>
+        <footer class="footer">
+            <div class="footer__copyright">&#169; 2020 Mesto Russia</div>
+        </footer>
+
+        <div class="popup">
+            <form class="popup__container" action="">
+                <div class="popup__close">&#215;</div>
+                <h3 class="popup__title">Редактировать профиль</h3>
+                <input class="popup__input popup__input_name" type="text" value="Жак Ив Кусто">
+                <input class="popup__input popup__input_job" type="text" value="Исследователь океана">
+                <button  type='submit' class="popup__save-button">Сохранить</button>
+            </form>
+        </div>
+    </div>
+  
+<script src="./scripts/index.js"></script>
 </body>
+
 </html>

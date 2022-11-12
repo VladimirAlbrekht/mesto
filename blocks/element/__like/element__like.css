@@ -1,0 +1,8 @@
+.element__like {
+    align-self: flex-end;
+}
+
+.element__like:hover {
+cursor: pointer;
+opacity: 0.6;
+}
