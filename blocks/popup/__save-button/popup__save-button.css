@@ -18,4 +18,13 @@
 
 .popup__save-button:hover {
   cursor: pointer;
+  opacity: 0.8;
+}
+
+@media (max-width: 568px) {
+  .popup__save-button {
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 15px;
+  }
 }

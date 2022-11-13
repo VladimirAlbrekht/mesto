@@ -1,7 +1,6 @@
 .popup__container {
   box-sizing: border-box;
   width: 430px;
-  height: 330px;
   background-color: #fff;
   padding: 34px 36px 37px;
   display: flex;
@@ -9,4 +8,12 @@
   position: relative;
   justify-content: flex-start;
   border-radius: 10px;
+}
+
+
+@media (max-width: 568px) {
+  .popup__container {
+    width: 282px;
+    padding: 25px 22px;
+  }
 }

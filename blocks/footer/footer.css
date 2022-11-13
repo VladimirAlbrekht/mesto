@@ -4,8 +4,8 @@
   margin: 0 auto;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 925px) {
   .footer{
-    padding-top: 48px;
+    padding: 48px 19px 0;
   }
 }

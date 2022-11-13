@@ -1,9 +1,12 @@
 .profile__edit-button {
   width: 24px;
   height: 24px;
-  background-color: inherit;
+  min-width: 24px;
   border: 1px solid #fff;
   padding: 0;
+  background: url(./../../../images/icons/pencil.svg) no-repeat center;
+  background-size: 10px;
+  align-self: center;
 }
 
 
@@ -14,8 +17,10 @@
 
 @media (max-width: 767px) {
   .profile__edit-button {
+    min-width: 18px;
     max-width: 18px;
     max-height: 18px;
+    background-size: 7.5px;
   }
 }
 

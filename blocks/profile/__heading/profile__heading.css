@@ -1,5 +1,12 @@
 .profile__heading {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 18px;
+}
+
+@media (max-width: 768px) {
+  .profile__heading {
+    justify-content: center;
+    align-items: center;
+  } 
 }
