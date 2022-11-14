@@ -9,21 +9,23 @@ let closePopup = function(){
     popupElement.classList.remove('popup_opened')
 }
 
-let formElement = document.querySelector('.popup__container');
+
 let nameInput = document.querySelector('.popup__input_type_name');
 let jobInput = document.querySelector('.popup__input_type_job');
 
 let openPopup = function(){
     popupElement.classList.add('popup_opened');
+    nameInput.value = profileName.textContent;
+    jobInput.value = profileJob.textContent;
 }
 
 function formSubmitHandler (evt) {
     evt.preventDefault(); 
-    profileName.textContent = nameInput.value; /* Добавляем значениие из поля инпут во внутрь тега. При повторном открытии попапа данные заносятся из полей профиля в инпуты  */
+    profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
-    popupElement.classList.remove('popup_opened');
+    closePopup();  
 }
 
-formElement.addEventListener('submit', formSubmitHandler); 
+popupElement.addEventListener('submit', formSubmitHandler); 
 EditButton.addEventListener('click', openPopup);
 CloseButton.addEventListener('click', closePopup);
