@@ -26,7 +26,6 @@
 @media (max-width: 568px) {
   .profile__name {
     max-width: 250px;
-    display: block;
     margin-left: 31px;
   }
 }
