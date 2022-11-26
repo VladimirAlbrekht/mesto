@@ -19,6 +19,7 @@
 @import url(../blocks/element/__info/element__info.css);
 @import url(../blocks/element/__image/element__image.css);
 @import url(../blocks/element/__like/element__like.css);
+@import url(../blocks/element/__like/_active/element__like_active.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 @import url(../blocks/popup/popup.css);
@@ -29,3 +30,23 @@
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__save-button/popup__save-button.css);
 @import url(../blocks/popup/__close/popup__close.css);
+@import url(../blocks/popup-new-item/__close/popup-new-item__close.css);
+@import url(../blocks/popup-new-item/__container/popup-new-item__container.css);
+@import url(../blocks/popup-new-item/__form/popup-new-item__form.css);
+@import url(../blocks/popup-new-item/__input/popup-new-item__input.css);
+@import url(../blocks/popup-new-item/__save-button/popup-new-item__save-button.css);
+@import url(../blocks/popup-new-item/__title/popup-new-item__title.css);
+@import url(../blocks/popup-new-item/popup-new-item.css);
+@import url(../blocks/popup-new-item/_opened/popup-new-item_opened.css);
+
+
+.grid-element__image {
+    width: 150px;
+    height: 150px;
+    display: block;
+  }
+  
+  .grid-element {
+    display: flex;
+    flex-direction: column;
+  }
