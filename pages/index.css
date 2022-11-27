@@ -20,6 +20,7 @@
 @import url(../blocks/element/__image/element__image.css);
 @import url(../blocks/element/__like/element__like.css);
 @import url(../blocks/element/__like/_active/element__like_active.css);
+@import url(../blocks/element/__trash/element__trash.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 @import url(../blocks/popup/popup.css);
@@ -38,6 +39,14 @@
 @import url(../blocks/popup-new-item/__title/popup-new-item__title.css);
 @import url(../blocks/popup-new-item/popup-new-item.css);
 @import url(../blocks/popup-new-item/_opened/popup-new-item_opened.css);
+@import url(../blocks/element/_opened/element_opened.css);
+@import url(../blocks/element/__close/element__close.css);
+@import url(../blocks/element/__trash/_hide/element__trash_hide.css);
+@import url(../blocks/popup-image/popup-image.css);
+@import url(../blocks/popup-image/_opened/popup-image_opened.css);
+@import url(../blocks/popup-image/__container/popup-image__container.css);
+@import url(../blocks/popup-image/__image/popup-image__image.css);
+@import url(../blocks/popup-image/__title/popup-image__title.css);
 
 
 .grid-element__image {

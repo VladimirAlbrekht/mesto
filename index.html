@@ -28,47 +28,27 @@
                 </div>
                 <button type="button" class="profile__add-button" aria-label="Добавить"></button>
             </section>
-
             <section class="elements">
                 <ul class="elements__list">
-                <template id="element-template">
-                    <li class="element">
-                        <img src="" alt="фото Циндао" class="element__image">
-                        <div class="element__info">
-                            <h2 class="element__title"></h2>
-                            <button type="button" class="element__like" aria-label="Нравится"></button>
-                        </div>
-                    </li>
-                </template>
-                    
-                    <!-- <li class="element">
-                        <img src="./images/nankin.jpeg" alt="фото Нанкин" class="element__image">
-                        <div class="element__info">
-                            <h2 class="element__title">Нанкин</h2>
-                            <button type="button" class="element__like" aria-label="Нравится"></button>
-                        </div>
-                    </li>
-                    <li class="element">
-                        <img src="./images/shanghai.jpeg" alt="фото Шанхай" class="element__image">
-                        <div class="element__info">
-                            <h2 class="element__title">Шанхай</h2>
-                            <button type="button" class="element__like" aria-label="Нравится"></button>
-                        </div>
-                    </li>
-                    <li class="element">
-                        <img src="./images/rizhao.jpeg" alt="фото Жичжао" class="element__image">
-                        <div class="element__info">
-                            <h2 class="element__title">Жичжао</h2>
-                            <button type="button" class="element__like" aria-label="Нравится"></button>
-                        </div>
-                    </li>
-                    <li class="element">
-                        <img src="./images/guanzhou.jpeg" alt="фото Гуанчжоу" class="element__image">
-                        <div class="element__info">
-                            <h2 class="element__title">Гуанчжоу</h2>
-                            <button type="button" class="element__like" aria-label="Нравится"></button>
-                        </div>
-                    </li> --> 
+                    <template id="element-template">
+                        <li class="element">
+                            <button type="button" class="element__trash" aria-label="Удалить"></button>
+                            <img src="" alt="" class="element__image">
+                            <div class="element__info">
+                                <h2 class="element__title"></h2>
+                                <button type="button" class="element__like" aria-label="Нравится"></button>
+                            </div>
+
+                            <div class="popup-image">
+                                <div class="popup-image__container">
+                                    <button type="button" class="popup__close popup-image__close"></button>
+                                    <img src="" alt="" class="popup-image__image">
+                                    <h2 class="popup__title popup-image__title"></h2>
+                                </div>
+                            </div>
+                        </li>
+
+                    </template>
                 </ul>
             </section>
 
@@ -82,8 +62,8 @@
                 <button type="button" class="popup__close"></button>
                 <h3 class="popup__title">Редактировать профиль</h3>
                 <form name="popup-form" class="popup__form" action="post">
-                    <input name="popup-name" class="popup__input popup__input_type_name" type="text"  maxlength="30">
-                    <input name="poup-job" class="popup__input popup__input_type_job" type="text"  maxlength="50">
+                    <input name="popup-name" class="popup__input popup__input_type_name" type="text" maxlength="30">
+                    <input name="poup-job" class="popup__input popup__input_type_job" type="text" maxlength="50">
                     <button type='submit' class="popup__save-button" aria-label="Сохранить">Сохранить</button>
                 </form>
             </div>
@@ -93,15 +73,30 @@
                 <button type="button" class="popup-new-item__close"></button>
                 <h3 class="popup__title">Новое место</h3>
                 <form name="popup-new-item__form" class="popup-new-item__form" action="post">
-                    <input name="place-name" class="popup__input popup-new-item__input_type_name" type="text" value="Название" maxlength="30">
-                    <input name="place-image" class="popup__input popup-new-item__input_type_link" type="text"  value="Ссылка на картинку">
+                    <input name="place-name" class="popup__input popup-new-item__input_type_name" type="text"
+                        value="Название" maxlength="30">
+                    <input name="place-image" class="popup__input popup-new-item__input_type_link" type="text"
+                        value="Ссылка на картинку">
                     <button type='submit' class="popup__save-button" aria-label="Сохранить">Сохранить</button>
                 </form>
             </div>
         </div>
+        <div class="popup">
+            <div class="popup__container">
+                <button type="button" class="popup__close"></button>
+                <h3 class="popup__title">Редактировать профиль</h3>
+                <form name="popup-form" class="popup__form" action="post">
+                    <input name="popup-name" class="popup__input popup__input_type_name" type="text" maxlength="30">
+                    <input name="poup-job" class="popup__input popup__input_type_job" type="text" maxlength="50">
+                    <button type='submit' class="popup__save-button" aria-label="Сохранить">Сохранить</button>
+                </form>
+            </div>
+        </div>
+
+
     </div>
 
-    <script src="./scripts/index.js"></script>
+    <script src="./scripts/index.js" type="module"></script>
 </body>
 
 </html>
