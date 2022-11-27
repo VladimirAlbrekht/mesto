@@ -30,25 +30,7 @@
             </section>
             <section class="elements">
                 <ul class="elements__list">
-                    <template id="element-template">
-                        <li class="element">
-                            <button type="button" class="element__trash" aria-label="Удалить"></button>
-                            <img src="" alt="" class="element__image">
-                            <div class="element__info">
-                                <h2 class="element__title"></h2>
-                                <button type="button" class="element__like" aria-label="Нравится"></button>
-                            </div>
-
-                            <div class="popup-image">
-                                <div class="popup-image__container">
-                                    <button type="button" class="popup__close popup-image__close"></button>
-                                    <img src="" alt="" class="popup-image__image">
-                                    <h2 class="popup__title popup-image__title"></h2>
-                                </div>
-                            </div>
-                        </li>
-
-                    </template>
+                   
                 </ul>
             </section>
 
@@ -92,11 +74,29 @@
                 </form>
             </div>
         </div>
-
-
     </div>
 
     <script src="./scripts/index.js" type="module"></script>
+   
+    <template id="element-template">
+        <li class="element">
+            <button type="button" class="element__trash" aria-label="Удалить"></button>
+            <img src="" alt="" class="element__image">
+            <div class="element__info">
+                <h2 class="element__title"></h2>
+                <button type="button" class="element__like" aria-label="Нравится"></button>
+            </div>
+
+            <div class="popup-image">
+                <div class="popup-image__container">
+                    <button type="button" class="popup__close popup-image__close"></button>
+                    <img src="" alt="" class="popup-image__image">
+                    <h2 class="popup__title popup-image__title"></h2>
+                </div>
+            </div>
+        </li>
+
+    </template>
 </body>
 
 </html>
