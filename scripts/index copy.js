@@ -10,7 +10,6 @@ const addButton = document.querySelector('.profile__add-button');
 const buttonCloseEditForm = document.querySelector('.popup__close_edit-form');
 const buttonCloseAddForm = document.querySelector('.popup__close_add-form');
 const profileName = document.querySelector('.profile__name');
-console.log(profileName);
 const profileJob = document.querySelector('.profile__status');
 const nameInput = document.querySelector('[name="popup-name"]');
 const jobInput = document.querySelector('[name="popup-job"]');
@@ -26,7 +25,6 @@ const openPopup = function(index){
 const addValueProfileForm = function () {
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
-
 }
 const closePopup = function(index){
     popupElement[index].classList.remove('popup_opened')
@@ -39,6 +37,7 @@ buttonCloseEditForm.addEventListener('click',  ()=> closePopup(0));
 
 popupForm.addEventListener('submit', function(evt) {
     evt.preventDefault(); 
+    addValueProfileForm();
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
     closePopup(0);
@@ -49,6 +48,7 @@ addButton.addEventListener('click',  ()=> openPopup(1));
 buttonCloseAddForm.addEventListener('click',  ()=> closePopup(1));
 
   /* ДОБАВЛЕНИЕ БАЗОВЫХ КАРТОЧЕК ПРИ ЗАГРУЗКЕ СТРАНИЦЫ */
+
   const listElement = document.querySelector('.elements__list')
   const elementTemplate =
       document.querySelector('#element-template').content.querySelector('.element')
