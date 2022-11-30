@@ -54,8 +54,8 @@
             <div class="popup__container">
                 <button type="button" class="popup__close popup__close_add-form"></button>
                 <h3 class="popup__title">Новое место</h3>
-                <form name="popup-form" class="popup__form popup-new-item__form" action="post">
-                    <input name="place-name" class="popup__input popup_input_type_name" type="text"
+                <form name="popup-form" class="popup__form popup__form_new-item" action="post">
+                    <input name="place-name" class="popup__input popup__input_type_name" type="text"
                         placeholder="Название" maxlength="30">
                     <input name="place-image" class="popup__input popup__input_type_link" type="text"
                         placeholder="Ссылка на картинку">
@@ -64,10 +64,10 @@
             </div>
         </div>
         <div class="popup popup_open-image">
-            <div class="popup__container popup-image__container">
+            <div class="popup__container popup__container_image">
                 <button type="button" class="popup__close popup__close_image-form"></button>
-                <img src=" " alt=" " class="popup-image__image">
-                <h2 class="popup__title popup-image__title"></h2>
+                <img src=" " alt=" " class="popup__image_picture">
+                <h2 class="popup__title popup__title_picture"></h2>
             </div>
         </div>
         <template id="element-template">

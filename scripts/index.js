@@ -6,8 +6,8 @@ import initialCards from './data.js'
 const popupEditProfile = document.querySelector('.popup_edit-profile');
 const popupAddNewCard = document.querySelector('.popup_add-new-card');
 const popupOpenImage = document.querySelector('.popup_open-image');
-const popupImageTitle = document.querySelector('.popup-image__title');
-const popupImageLink = document.querySelector('.popup-image__image');
+const popupImageTitle = document.querySelector('.popup__title_picture');
+const popupImageLink = document.querySelector('.popup__image_picture');
 const popupForm = document.querySelector('.popup__form');
 const buttonEditProfile = document.querySelector('.profile__edit-button');
 const buttonAddNewCard = document.querySelector('.profile__add-button');
@@ -57,7 +57,7 @@ buttonCloseAddForm.addEventListener('click', ()=> closePopup(popupAddNewCard));
   const listElement = document.querySelector('.elements__list')
   const elementTemplate =
       document.querySelector('#element-template').content.querySelector('.element')
-  const form = document.querySelector('.popup-new-item__form')
+  const form = document.querySelector('.popup__form_new-item')
   const formInputTitle = document.querySelector('[name="place-name"]')
   const formInputImage = document.querySelector('[name="place-image"]')
  
