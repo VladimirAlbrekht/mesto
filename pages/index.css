@@ -42,4 +42,4 @@
 @import url(../blocks/element/__close/element__close.css);
 @import url(../blocks/element/__trash/_hide/element__trash_hide.css);
 @import url(../blocks/popup-image/popup-image.css);
-@import url(../blocks/popup-image/_opened/popup-image_opened.css);
+@import url(../blocks/popup/_open-image/popup_open-image.css);
