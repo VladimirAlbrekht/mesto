@@ -50,17 +50,24 @@
                 </form>
             </div>
         </div>
-        <div class="popup">
+        <div class="popup popup_add-new-card">
             <div class="popup__container">
                 <button type="button" class="popup__close popup__close_add-form"></button>
                 <h3 class="popup__title">Новое место</h3>
-                <form name="popup__form" class="popup-new-item__form" action="post">
+                <form name="popup-form" class="popup__form popup-new-item__form" action="post">
                     <input name="place-name" class="popup__input popup_input_type_name" type="text"
                         placeholder="Название" maxlength="30">
                     <input name="place-image" class="popup__input popup__input_type_link" type="text"
                         placeholder="Ссылка на картинку">
                     <button type='submit' class="popup__save-button" aria-label="Сохранить">Сохранить</button>
                 </form>
+            </div>
+        </div>
+        <div class="popup popup_open-image">
+            <div class="popup__container popup-image__container">
+                <button type="button" class="popup__close popup__close_image-form"></button>
+                <img src=" " alt=" " class="popup-image__image">
+                <h2 class="popup__title popup-image__title"></h2>
             </div>
         </div>
         <template id="element-template">
@@ -70,13 +77,6 @@
                 <div class="element__info">
                     <h2 class="element__title"></h2>
                     <button type="button" class="element__like" aria-label="Нравится"></button>
-                </div>
-                <div class="popup popup-image">
-                    <div class="popup-image__container">
-                        <button type="button" class="popup__close popup-image__close"></button>
-                        <img src=" " alt=" " class="popup-image__image">
-                        <h2 class="popup__title popup-image__title"></h2>
-                    </div>
                 </div>
             </li>
         </template>  
