@@ -3,12 +3,12 @@ import initialCards from './data.js'
 
 /* ПЕРЕМЕННЫЕ  */
 
-const popupEditProfile = document.querySelector('.popup_edit-profile');
-const popupAddNewCard = document.querySelector('.popup_add-new-card');
+const popupEditProfileContainer = document.querySelector('.popup_edit-profile');
+const formEditProfile = document.querySelector('.popup__form_edit-profile');
+const popupAddCard = document.querySelector('.popup_add-new-card');
 const popupOpenImage = document.querySelector('.popup_open-image');
 const popupImageTitle = document.querySelector('.popup__title_picture');
 const popupImageLink = document.querySelector('.popup__image_picture');
-const popupForm = document.querySelector('.popup__form');
 const buttonEditProfile = document.querySelector('.profile__edit-button');
 const buttonAddNewCard = document.querySelector('.profile__add-button');
 const buttonCloseEditForm = document.querySelector('.popup__close_edit-form');
@@ -29,35 +29,46 @@ const openPopup = function(item){
 const addValueProfileForm = function () {
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
-
 }
+
+const removeValueformAddCard = function () {
+    formInputTitle.value ='';
+    formInputImage.value ='';
+}
+
 const closePopup = function(item){
     item.classList.remove('popup_opened')
 }
 
 /* СЛУШАТЕЛИ */
 
-buttonEditProfile.addEventListener('click', ()=> openPopup(popupEditProfile));
-buttonEditProfile.addEventListener('click', addValueProfileForm);
-buttonCloseEditForm.addEventListener('click', ()=> closePopup(popupEditProfile));
+buttonEditProfile.addEventListener ('click', function () {
+    openPopup(popupEditProfileContainer);
+    addValueProfileForm();
+});
+buttonCloseEditForm.addEventListener('click', ()=> closePopup(popupEditProfileContainer));
 buttonCloseImageForm.addEventListener('click', ()=> closePopup(popupOpenImage));
-buttonAddNewCard.addEventListener('click', ()=> openPopup(popupAddNewCard));
+buttonAddNewCard.addEventListener('click', ()=> openPopup(popupAddCard));
+buttonCloseAddForm .addEventListener('click', function  () {
+    closePopup(popupAddCard);
+    removeValueformAddCard();
+} );
 
-popupForm.addEventListener('submit', function(evt) {
+formEditProfile.addEventListener('submit', function(evt) {
     evt.preventDefault(); 
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
-    closePopup (popupEditProfile);
+    closePopup (popupEditProfileContainer);
 }); 
 
-buttonCloseAddForm.addEventListener('click', ()=> closePopup(popupAddNewCard));
+buttonCloseAddForm.addEventListener('click', ()=> closePopup(popupAddCard));
 
   /* ДОБАВЛЕНИЕ БАЗОВЫХ КАРТОЧЕК ПРИ ЗАГРУЗКЕ СТРАНИЦЫ */
 
   const listElement = document.querySelector('.elements__list')
   const elementTemplate =
       document.querySelector('#element-template').content.querySelector('.element')
-  const form = document.querySelector('.popup__form_new-item')
+  const formAddCard = document.querySelector('.popup__form_new-item')
   const formInputTitle = document.querySelector('[name="place-name"]')
   const formInputImage = document.querySelector('[name="place-image"]')
  
@@ -73,11 +84,13 @@ function createElement(item) {
     newElementDeleteButton.addEventListener('click', handleDeleteButtonClick)
     newElementLikeButton.addEventListener('click', handleLikeButtonClick) 
  
+    /*  ОТКРЫТИЕ ПОПАПА С КАРТИНКОЙ */
     newElementImage.addEventListener('click', function() {
         openPopup(popupOpenImage);
         popupImageLink.src = item.image
         popupImageTitle.textContent = item.title
         return newElementImage
+
     })
     return newElement;  
     
@@ -103,20 +116,19 @@ initialCards.forEach(function(item) {
     renderNewElement(item, listElement)
 
 })
-
-const submitNewForm = (e) => {
-    e.preventDefault()
-    closePopup(popupAddNewCard);
-
  /*  СОЗДАЕМ НОВЫЙ ОБЪЕКТ */
-
+const submitAddCardForm = (e) => {
+    e.preventDefault()
+    closePopup(popupAddCard);
+   
     const newElement = {
         title: formInputTitle.value,
         image: formInputImage.value
     }
 
     renderNewElement(newElement, listElement)
-
+    removeValueformAddCard()
   
 }
-form.addEventListener('submit', submitNewForm)
+
+formAddCard.addEventListener('submit', submitAddCardForm)
