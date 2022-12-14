@@ -45,7 +45,7 @@
                 <h3 class="popup__title">Редактировать профиль</h3>
                 <form name="profile" class="popup__form popup__form_edit-profile" action="post" novalidate>
                     <input id="profile-name" name="popup-name" class="popup__input popup__input_type_name"
-                        placeholder="Имя" type="text" minlength="2" maxlength="30" required>
+                        placeholder="Имя" type="text" minlength="2" maxlength="40" required>
                     <span id="profile-name-error" class="error"></span>
                     <input id="profile-status" name="popup-job" class="popup__input popup__input_type_job"
                         placeholder="Вид деятельности" type="text" minlength="2" maxlength="200" required>
@@ -89,9 +89,9 @@
             </li>
         </template>
     </div>
-
+    
     <script src="./scripts/index.js" type="module"></script>
-
+    <script src="./scripts/validation.js" type="module"></script>
 
 </body>
 
