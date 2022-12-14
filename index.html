@@ -30,7 +30,7 @@
             </section>
             <section class="elements">
                 <ul class="elements__list">
-                   
+
                 </ul>
             </section>
 
@@ -43,10 +43,15 @@
             <div class="popup__container">
                 <button type="button" class="popup__close popup__close_edit-form"></button>
                 <h3 class="popup__title">Редактировать профиль</h3>
-                <form name="popup-form" class="popup__form popup__form_edit-profile" action="post">
-                    <input name="popup-name" class="popup__input popup__input_type_name" placeholder="Имя" type="text" maxlength="30">
-                    <input name="popup-job" class="popup__input popup__input_type_job" placeholder="Вид деятельности" type="text" maxlength="50">
-                    <button type='submit' class="popup__save-button" aria-label="Сохранить">Сохранить</button>
+                <form name="profile" class="popup__form popup__form_edit-profile" action="post" novalidate>
+                    <input id="profile-name" name="popup-name" class="popup__input popup__input_type_name"
+                        placeholder="Имя" type="text" minlength="2" maxlength="30" required>
+                    <span id="profile-name-error" class="error"></span>
+                    <input id="profile-status" name="popup-job" class="popup__input popup__input_type_job"
+                        placeholder="Вид деятельности" type="text" minlength="2" maxlength="200" required>
+                    <span id="profile-status-error" class="error"></span>
+                    <button type='submit' class="popup__button popup__save-button"
+                        aria-label="Сохранить">Сохранить</button>
                 </form>
             </div>
         </div>
@@ -54,12 +59,15 @@
             <div class="popup__container">
                 <button type="button" class="popup__close popup__close_add-form"></button>
                 <h3 class="popup__title">Новое место</h3>
-                <form name="popup-form" class="popup__form popup__form_new-item" action="post">
-                    <input name="place-name" class="popup__input popup__input_type_name" type="text"
-                        placeholder="Название" maxlength="30">
-                    <input name="place-image" class="popup__input popup__input_type_link" type="text"
-                        placeholder="Ссылка на картинку">
-                    <button type='submit' class="popup__save-button" aria-label="Сохранить">Сохранить</button>
+                <form name="new" class="popup__form popup__form_new-item" action="post" novalidate>
+                    <input id="place-name" name="place-name" class="popup__input popup__input_type_name" type="text"
+                        placeholder="Название" minlength="2" maxlength="30" required>
+                    <span id="place-name-error" class="error"></span>
+                    <input id="place-link" name="place-image" class="popup__input popup__input_type_link" type="url"
+                        placeholder="Ссылка на картинку" required>
+                    <span id="place-link-error" class="error"></span>
+                    <button type='submit' class="popup__button popup__save-button"
+                        aria-label="Сохранить">Сохранить</button>
                 </form>
             </div>
         </div>
@@ -79,12 +87,12 @@
                     <button type="button" class="element__like" aria-label="Нравится"></button>
                 </div>
             </li>
-        </template>  
+        </template>
     </div>
 
     <script src="./scripts/index.js" type="module"></script>
-   
- 
+
+
 </body>
 
 </html>
