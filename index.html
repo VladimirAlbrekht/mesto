@@ -50,7 +50,7 @@
                     <input id="profile-status" name="popup-job" class="popup__input popup__input_type_job"
                         placeholder="Вид деятельности" type="text" minlength="2" maxlength="200" required>
                     <span id="profile-status-error" class="error"></span>
-                    <button type='submit' class="popup__button popup__save-button"
+                    <button  type='submit' class="popup__button popup__save-button .popup__save-button_type_edit"
                         aria-label="Сохранить">Сохранить</button>
                 </form>
             </div>
@@ -59,15 +59,15 @@
             <div class="popup__container">
                 <button type="button" class="popup__close popup__close_add-form"></button>
                 <h3 class="popup__title">Новое место</h3>
-                <form name="new" class="popup__form popup__form_new-item" action="post" novalidate>
+                <form id="new-place-form"name="new" class="popup__form popup__form_new-item" action="post" novalidate>
                     <input id="place-name" name="place-name" class="popup__input popup__input_type_name" type="text"
                         placeholder="Название" minlength="2" maxlength="30" required>
                     <span id="place-name-error" class="error"></span>
                     <input id="place-link" name="place-image" class="popup__input popup__input_type_link" type="url"
                         placeholder="Ссылка на картинку" required>
                     <span id="place-link-error" class="error"></span>
-                    <button type='submit' class="popup__button popup__save-button"
-                        aria-label="Сохранить">Сохранить</button>
+                    <button id='add-card-button' type='submit' class="popup__button popup__save-button popup__save-button_type_add popup__button_invalid"
+                        aria-label="Сохранить" disabled>Сохранить</button>
                 </form>
             </div>
         </div>
@@ -89,9 +89,9 @@
             </li>
         </template>
     </div>
-    
-    <script src="./scripts/index.js" type="module"></script>
     <script src="./scripts/validation.js" type="module"></script>
+    <script src="./scripts/index.js" type="module"></script>
+    
 
 </body>
 

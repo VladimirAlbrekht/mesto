@@ -11,4 +11,12 @@
     justify-content: flex-start;
     border-radius: 10px;
   }
+
+
+  @media (max-width: 568px) {
+    .popup__container_image {
+      height: 300px;
+      min-height: 300px;
+    }
+  }
   
