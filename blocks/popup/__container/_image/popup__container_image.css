@@ -10,6 +10,7 @@
     position: relative;
     justify-content: flex-start;
     border-radius: 10px;
+    background-color: inherit;
   }
 
 
