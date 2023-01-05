@@ -61,13 +61,13 @@
                 <button type="button" class="popup__close popup__close_add-form"></button>
                 <h3 class="popup__title">Новое место</h3>
                 <form id="new-place-form" name="new" class="popup__form popup__form_new-item" action="post" novalidate>
-                    <input id="place-name" name="place-name" class="popup__input popup__input_type_name" type="text"
+                    <input id="place-name" name="place-name" class="popup__input popup__input_type_name" value="" type="text"
                         placeholder="Название" minlength="2" maxlength="30" required>
                     <span id="place-name-error" class="error"></span>
-                    <input id="place-link" name="place-image" class="popup__input popup__input_type_link" type="url"
+                    <input id="place-link" name="place-image" class="popup__input popup__input_type_link" value="" type="url"
                         placeholder="Ссылка на картинку" required>
                     <span id="place-link-error" class="error"></span>
-                    <button id='add-card-button' type='submit' class="popup__button popup__save-button popup__save-button_type_add popup__button_invalid"
+                    <button id='add-card-button' type='submit' class="popup__button popup__save-button popup__save-button_type_add"
                         aria-label="Сохранить" disabled>Сохранить</button>
                 </form>
             </div>
@@ -89,9 +89,10 @@
                 </div>
             </li>
         </template>
-    </div>
-    <script src="./scripts/validation.js" type="module"></script>
+    </div> 
+    <script defer src="./scripts/FormValidator.js" type="module"></script>
     <script src="./scripts/index.js" type="module"></script>
+    <script defer src="./scripts/card.js" type="module"></script>
 </body>
 
 </html>
