@@ -44,7 +44,7 @@
             <div class="popup__container">
                 <button type="button" class="popup__close popup__close_edit-form"></button>
                 <h3 class="popup__title">Редактировать профиль</h3>
-                <form name="profile" class="popup__form popup__form_edit-profile" action="post" novalidate>
+                <form name="profile-form" class="popup__form popup__form_edit-profile" action="post" novalidate>
                     <input id="profile-name" name="popup-name" class="popup__input popup__input_type_name"
                         placeholder="Имя" type="text" minlength="2" maxlength="40" required>
                     <span id="profile-name-error" class="error"></span>
@@ -60,7 +60,7 @@
             <div class="popup__container">
                 <button type="button" class="popup__close popup__close_add-form"></button>
                 <h3 class="popup__title">Новое место</h3>
-                <form id="new-place-form" name="new" class="popup__form popup__form_new-item" action="post" novalidate>
+                <form id="new-place-form" name="card-form" class="popup__form popup__form_new-item" action="post" novalidate>
                     <input id="place-name" name="place-name" class="popup__input popup__input_type_name" value="" type="text"
                         placeholder="Название" minlength="2" maxlength="30" required>
                     <span id="place-name-error" class="error"></span>
@@ -92,7 +92,7 @@
     </div> 
     <script defer src="./scripts/FormValidator.js" type="module"></script>
     <script src="./scripts/index.js" type="module"></script>
-    <script defer src="./scripts/card.js" type="module"></script>
+    <script defer src="./scripts/Card.js" type="module"></script>
 </body>
 
 </html>
