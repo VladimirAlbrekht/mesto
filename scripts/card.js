@@ -1,16 +1,18 @@
-import { openPopup, closePopup } from "./index.js";
+import { openPopup } from "./index.js";
 const popupOpenImage = document.querySelector(".popup_open-image");
 const popupImageLink = document.querySelector(".popup__image_picture");
 const popupImageTitle = document.querySelector(".popup__title_picture");
 
 export default class Card {
-  constructor(title, image, templateSelector) {
+  constructor(title, image, templateSelector, handleCardClick) {
     this._title = title;
     this._image = image;
     this._templateSelector = templateSelector;
+    this._handleCardClick = handleCardClick;
+   
   }
   /*  Открытие попапа с картинкой */
-  _openPopup() {
+  _handleImageClick() {
     openPopup(popupOpenImage);
     popupImageLink.src = this._image;
     popupImageLink.alt = this._title;
@@ -26,10 +28,8 @@ export default class Card {
   }
 
   _setEventListeners() {
-    this._element
-      .querySelector(".element__image")
-      .addEventListener("click", () => {
-        this._openPopup();
+    this._element.querySelector(".element__image").addEventListener("click", () => {
+      this._handleImageClick();
       });
     this._element
       .querySelector(".element__trash")
@@ -40,11 +40,6 @@ export default class Card {
       .querySelector(".element__like")
       .addEventListener("click", (evt) => {
         this._handlelikeButton(evt);
-      });
-    document
-      .querySelector(".popup__close_image-form")
-      .addEventListener("click", (evt) => {
-        closePopup(popupOpenImage);
       });
   }
 
