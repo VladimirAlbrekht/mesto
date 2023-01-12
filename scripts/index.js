@@ -1,5 +1,5 @@
 import Card from "./Card.js";
-import { FormValidator } from "./FormValidator.js";
+import FormValidator from "./FormValidator.js";
 import initialCards from "./data.js";
 
 /* ПЕРЕМЕННЫЕ  */
@@ -19,6 +19,7 @@ const formAddCard = document.querySelector(".popup__form_new-item");
 const formInputTitle = document.querySelector('[name="place-name"]');
 const formInputImage = document.querySelector('[name="place-image"]');
 const popups = document.querySelectorAll(".popup");
+
 const config = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
@@ -29,14 +30,11 @@ const config = {
   errorClass: "popup__error_visible",
 };
 
-//Создаем экземпляр класса
-
-const enableValidation = (config, popup) => {
-  const formValidatorEditProfile = new FormValidator(config, popup);
-  formValidatorEditProfile.enableValidation();
-};
-enableValidation(config, popupAddCard);
-enableValidation(config, popupEditProfileContainer);
+function enableValidation(config, formSelector) {
+  const formValidator = new FormValidator(config, formSelector);
+  formValidator.enableValidation(config, formSelector);
+  formValidator._removeEventListeners(); //удаляем слушатели при повторном открытии попапов
+}
 
 //Функции
 export const openPopup = function (popup) {
@@ -75,7 +73,7 @@ popups.forEach((popup) => {
 function closePopupEsc(key) {
   if (key.key === "Escape") {
     const popup = document.querySelector(".popup_opened");
-    closePopup(popup);
+    closePopup(popup); 
   }
 }
 
@@ -84,11 +82,13 @@ function closePopupEsc(key) {
 buttonEditProfile.addEventListener("click", function () {
   openPopup(popupEditProfileContainer);
   addValueProfileForm();
+  enableValidation(config, popupEditProfileContainer); //при повторном открытии попапа слушатели удаляются
 });
 
 buttonAddNewCard.addEventListener("click", function () {
-  resetCardForm();
   openPopup(popupAddCard);
+  resetCardForm();
+  enableValidation(config, popupAddCardForm); //при повторном открытии попапа слушатели удаляются
 });
 
 formEditProfile.addEventListener("submit", function (evt) {
@@ -117,12 +117,12 @@ initialCards.forEach(function (item) {
 
 //Функция загрузки карточки в нужный селектор
 
-function createCard (title, image) {
+function createCard(title, image) {
   const cardElement = new Card(title, image, "#element-template");
   return cardElement;
 }
 
 function renderCard(title, image) {
-  const card = createCard(title, image)
+  const card = createCard(title, image);
   listElement.prepend(card.generateCard());
 }

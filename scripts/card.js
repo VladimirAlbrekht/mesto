@@ -9,7 +9,6 @@ export default class Card {
     this._image = image;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
-   
   }
   /*  Открытие попапа с картинкой */
   _handleImageClick() {
@@ -28,8 +27,10 @@ export default class Card {
   }
 
   _setEventListeners() {
-    this._element.querySelector(".element__image").addEventListener("click", () => {
-      this._handleImageClick();
+    this._element
+      .querySelector(".element__image")
+      .addEventListener("click", () => {
+        this._handleImageClick();
       });
     this._element
       .querySelector(".element__trash")

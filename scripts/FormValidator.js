@@ -1,4 +1,4 @@
-export class FormValidator {
+export default class FormValidator {
   constructor(config, formSelector) {
     this._config = config;
     this._formSelector = formSelector;
@@ -8,8 +8,10 @@ export class FormValidator {
     this._inputErrorClass = config.inputErrorClass;
     this._errorClass = config.errorClass;
     this._submitButtonSelector = config.submitButtonSelector;
-    this._button = this._formSelector.querySelector(this._submitButtonSelector);
-    this._inputList = Array.from(this._formSelector.querySelectorAll(this._inputSelector));
+    this._button = formSelector.querySelector(this._submitButtonSelector);
+    this._inputList = Array.from(
+      this._formSelector.querySelectorAll(this._inputSelector)
+    );
   }
 
   _hideInputError(input) {
@@ -65,15 +67,22 @@ export class FormValidator {
     });
   }
 
-  _resetValidation() {
-    this._toggleButton();
-    this._inputList.forEach((inputElement) => {
-      this._hideError(inputElement)
-    });
+  _removeEventListeners() {
+    window.removeEventListener("input", this._setEventListeners);
+  }
 
+  _resetForm() {
+    this._inputList.forEach((input) => {
+      this._hideInputError(input);
+      this._toggleButton(this._inputList, this._button);
+    });
+  }
+
+  _newFunction() {
+    console.log("Function is working");
   }
 
   enableValidation() {
-      this._setEventListeners();
+    this._setEventListeners();
   }
 }
