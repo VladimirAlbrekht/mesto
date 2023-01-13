@@ -8,9 +8,9 @@ export default class FormValidator {
     this._inputErrorClass = config.inputErrorClass;
     this._errorClass = config.errorClass;
     this._submitButtonSelector = config.submitButtonSelector;
-    this._button = formSelector.querySelector(this._submitButtonSelector);
+    this._button = this._formSelector.querySelector(this._submitButtonSelector);
     this._inputList = Array.from(
-      this._formSelector.querySelectorAll(this._inputSelector)
+    this._formSelector.querySelectorAll(this._inputSelector)
     );
   }
 
@@ -67,19 +67,11 @@ export default class FormValidator {
     });
   }
 
-  _removeEventListeners() {
-    window.removeEventListener("input", this._setEventListeners);
-  }
-
-  _resetForm() {
+  resetForm() {
+    this._toggleButton();
     this._inputList.forEach((input) => {
       this._hideInputError(input);
-      this._toggleButton(this._inputList, this._button);
     });
-  }
-
-  _newFunction() {
-    console.log("Function is working");
   }
 
   enableValidation() {

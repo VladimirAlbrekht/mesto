@@ -30,11 +30,12 @@ const config = {
   errorClass: "popup__error_visible",
 };
 
-function enableValidation(config, formSelector) {
-  const formValidator = new FormValidator(config, formSelector);
-  formValidator.enableValidation(config, formSelector);
-  formValidator._removeEventListeners(); //удаляем слушатели при повторном открытии попапов
-}
+// Включение валидации
+const profileFormValidator = new FormValidator(config,popupEditProfileContainer);
+profileFormValidator.enableValidation();
+
+const cardFormValidator = new FormValidator(config, popupAddCardForm);
+cardFormValidator.enableValidation();
 
 //Функции
 export const openPopup = function (popup) {
@@ -73,7 +74,7 @@ popups.forEach((popup) => {
 function closePopupEsc(key) {
   if (key.key === "Escape") {
     const popup = document.querySelector(".popup_opened");
-    closePopup(popup); 
+    closePopup(popup);
   }
 }
 
@@ -82,13 +83,13 @@ function closePopupEsc(key) {
 buttonEditProfile.addEventListener("click", function () {
   openPopup(popupEditProfileContainer);
   addValueProfileForm();
-  enableValidation(config, popupEditProfileContainer); //при повторном открытии попапа слушатели удаляются
+  profileFormValidator.resetForm();
 });
 
 buttonAddNewCard.addEventListener("click", function () {
   openPopup(popupAddCard);
   resetCardForm();
-  enableValidation(config, popupAddCardForm); //при повторном открытии попапа слушатели удаляются
+  cardFormValidator.resetForm();
 });
 
 formEditProfile.addEventListener("submit", function (evt) {
@@ -119,10 +120,10 @@ initialCards.forEach(function (item) {
 
 function createCard(title, image) {
   const cardElement = new Card(title, image, "#element-template");
-  return cardElement;
+  return cardElement.generateCard();
 }
 
 function renderCard(title, image) {
   const card = createCard(title, image);
-  listElement.prepend(card.generateCard());
+  listElement.prepend(card);
 }
