@@ -1,21 +1,9 @@
-import { openPopup } from "./index.js";
-const popupOpenImage = document.querySelector(".popup_open-image");
-const popupImageLink = document.querySelector(".popup__image_picture");
-const popupImageTitle = document.querySelector(".popup__title_picture");
-
 export default class Card {
   constructor(title, image, templateSelector, handleCardClick) {
     this._title = title;
     this._image = image;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
-  }
-  /*  Открытие попапа с картинкой */
-  _handleImageClick() {
-    openPopup(popupOpenImage);
-    popupImageLink.src = this._image;
-    popupImageLink.alt = this._title;
-    popupImageTitle.textContent = this._title;
   }
 
   _deleteCard() {
@@ -30,7 +18,7 @@ export default class Card {
     this._element
       .querySelector(".element__image")
       .addEventListener("click", () => {
-        this._handleImageClick();
+        this._handleCardClick(this._title, this._image);
       });
     this._element
       .querySelector(".element__trash")
