@@ -5,20 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
-    <title>Место</title>
-    
+    <title>Место</title>   
 </head>
 
 <body>
     <div class="page">
         <header class="header">
-            <a href="#" class="logo"><img src="./images/logo.svg" alt="логотип" class="logo__image"></a>
+            <a href="#" class="logo"><img src="<%=require('./images/logo.svg')%>" alt="логотип" class="logo__image"></a>
         </header>
         <main class="content">
             <section class="profile">
                 <div class="profile__content">
-                    <img src="./images/avatar.jpg" alt="аватар" class="profile__avatar">
+                    <img src="<%=require('./images/avatar.jpg')%>" alt="аватар" class="profile__avatar">
                     <div class="profile__info">
                         <div class="profile__heading">
                             <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -90,9 +88,5 @@
             </li>
         </template>
     </div> 
-    <script defer src="./scripts/FormValidator.js" type="module"></script>
-    <script src="./scripts/index.js" type="module"></script>
-    <script defer src="./scripts/Card.js" type="module"></script>
 </body>
-
 </html>
