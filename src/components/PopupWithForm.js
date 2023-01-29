@@ -1,5 +1,4 @@
 import Popup from "./Popup.js";
-// --- КЛАСС РАБОТЫ С ФОРМАМИ В ПОПАПАХ ---
 
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, handleSubmit) {
@@ -14,18 +13,16 @@ export default class PopupWithForm extends Popup {
     this._popupForm.reset();
   }
 
-  // метод, который собирает данные всех полей формы
+  // Cобираем данные всех полей формы
   _getInputValues() {
     this._formValues = {};
-
     this._inputList.forEach((input) => {
       this._formValues[input.name] = input.value;
     });
-
     return this._formValues;
   }
 
-  // дополнительно добавляем обработчик сабмита формы
+  // Добавляем обработчик сабмита формы
   setEventListeners() {
     super.setEventListeners();
     this._popupForm.addEventListener("submit", (evt) => {
@@ -34,4 +31,3 @@ export default class PopupWithForm extends Popup {
     });
   }
 }
-
