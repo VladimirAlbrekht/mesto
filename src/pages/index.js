@@ -8,8 +8,7 @@ import {
   buttonEditProfile,
   buttonAddNewCard,
   nameInput,
-  jobInput,
-  listElement,
+  jobInput
 } from "../utils/constants.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
@@ -46,7 +45,7 @@ function createCard(title, image) {
 
 function renderCard({ title, image }) {
   const card = createCard(title, image);
-  listElement.prepend(card);
+  cardList.addItem(card);
 }
 
 //Создаем объект класса PopupWhithImage и навешиваем слушатели событий
@@ -54,9 +53,10 @@ const popupWithImage = new PopupWithImage("#popup-image");
 popupWithImage.setEventListeners();
 
 const cardList = new Section(
-  { initialCards, renderer: renderCard },
+  {initialCards, renderer: renderCard },
   "#element-template"
 );
+
 cardList.renderCards(initialCards);
 
 //Создаем объект UserInfo
@@ -66,7 +66,6 @@ const userInfo = new UserInfo({
 });
 
 const handleSubmitAddCard = (values) => {
-  userInfo.getUserInfo(values);
   const imageValue = values["place-image"];
   const titleValue = values["place-name"];
   renderCard({ title: titleValue, image: imageValue });
@@ -81,7 +80,6 @@ const popupFormAddCard = new PopupWithForm(
 popupFormAddCard.setEventListeners();
 
 const handleSubmitProfile = (values) => {
-  userInfo.getUserInfo(values);
   const nameInput = values["popup-name"];
   const statusInput = values["popup-job"];
   userInfo.setUserInfo({
@@ -102,7 +100,6 @@ popupFormProfile.setEventListeners();
 
 buttonEditProfile.addEventListener("click", function () {
   popupFormProfile.open();
-  userInfo.getUserInfo(nameInput.textContent, jobInput.textContent);
   const userData = userInfo.getUserInfo();
   (nameInput.value = userData.name), (jobInput.value = userData.about);
   profileFormValidator.resetForm();

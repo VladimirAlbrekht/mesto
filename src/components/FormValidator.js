@@ -36,8 +36,8 @@ export default class FormValidator {
     }
   }
 
-  _hasInvalidInput(inputList) {
-    return inputList.some((item) => {
+  _hasInvalidInput() {
+    return this._inputList.some((item) => {
       if (item.validity.valid) {
         return false;
       } else {
@@ -62,7 +62,7 @@ export default class FormValidator {
       this._checkInputValidity(input);
       input.addEventListener("input", () => {
         this._checkInputValidity(input);
-        this._toggleButton(this._inputList, this._button);
+        this._toggleButton();
       });
     });
   }

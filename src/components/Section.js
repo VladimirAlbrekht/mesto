@@ -6,8 +6,10 @@ export default class Section {
     }
 
     addItem(element) {
-        this._container.append(element)
+        document.querySelector(".elements__list").prepend(element);
+        console.log('test');
     }
+
 
     renderCards(items){
         items.forEach(({title, image })  => {

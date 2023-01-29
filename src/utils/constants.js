@@ -39,7 +39,6 @@ const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__status");
 const nameInput = document.querySelector('[name="popup-name"]');
 const jobInput = document.querySelector('[name="popup-job"]');
-const listElement = document.querySelector(".elements__list");
 
 const config = {
   formSelector: ".popup__form",
@@ -61,5 +60,4 @@ export {
   profileJob,
   nameInput,
   jobInput,
-  listElement,
 };
