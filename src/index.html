@@ -16,13 +16,16 @@
         <main class="content">
             <section class="profile">
                 <div class="profile__content">
-                    <img src="<%=require('./images/avatar.jpg')%>" alt="аватар" class="profile__avatar">
+                    <div class="profile__picture">
+                        <img src="" alt="аватар" class="profile__avatar">
+                        <button class="profile__change-btn" type="button" aria-label="Изменить аватар пользователя"></button>
+                      </div>
                     <div class="profile__info">
                         <div class="profile__heading">
-                            <h1 class="profile__name">Жак-Ив Кусто</h1>
+                            <h1 class="profile__name"></h1>
                             <button type="button" class="profile__edit-button" aria-label="Редактировать"></button>
                         </div>
-                        <p class="profile__status">Исследователь океана</p>
+                        <p class="profile__status"></p>
                     </div>
                 </div>
                 <button type="button" class="profile__add-button" aria-label="Добавить"></button>
@@ -49,7 +52,7 @@
                     <input id="profile-status" name="popup-job" class="popup__input popup__input_type_job"
                         placeholder="Вид деятельности" type="text" minlength="2" maxlength="200" required>
                     <span id="profile-status-error" class="error"></span>
-                    <button id="edit-profile-button" type='submit' class="popup__button popup__save-button popup__save-button_type_edit"
+                    <button id="edit-profile-button" type='submit' class="popup__button  popup__submit-btn popup__save-button popup__save-button_type_edit"
                         aria-label="Сохранить">Сохранить</button>
                 </form>
             </div>
@@ -65,7 +68,7 @@
                     <input id="place-link" name="place-image" class="popup__input popup__input_type_link" value="" type="url"
                         placeholder="Ссылка на картинку" required>
                     <span id="place-link-error" class="error"></span>
-                    <button id='add-card-button' type='submit' class="popup__button popup__save-button popup__save-button_type_add"
+                    <button id='add-card-button' type='submit' class="popup__button popup__submit-btn popup__save-button popup__save-button_type_add"
                         aria-label="Сохранить">Сохранить</button>
                 </form>
             </div>
@@ -77,13 +80,37 @@
                 <h2 class="popup__title popup__title_picture"></h2>
             </div>
         </div>
+        <div id="popup-confirm" class="popup popup_confirm">
+            <div class="popup__container popup__container_confirm">
+            <h3 class="popup__title popup__title_confirm">Вы уверены?</h3>
+            <form class="popup__form popup__form_confirm">
+                <button class="popup__button popup__submit-btn popup__submit-btn_type_confirm" type="submit" aria-label="Подтвердить удаление">Да</button>
+            </form>
+            <button class="popup__close" type="button" aria-label="Закрыть окно"></button>
+            </div>
+        </div>
+        <div class="popup popup_change-avatar">
+            <div class="popup__container popup__container_change-avatar">
+            <h3 class="popup__title">Обновить аватар</h3>
+            <form class="popup__form popup__form_change-avatar" name="popupFormAvatar" novalidate>
+                <input id="change-avatar-input" type="url" placeholder="Ссылка на картинку" class="popup__input popup__input_change-avatar_link" name="link" required>
+                <span id="change-avatar-input-error" class="error"></span>
+                <button class="popup__button popup__submit-btn" type="submit">Сохранить</button>
+            </form>
+            <button class="popup__close" type="button" aria-label="Закрыть окно"></button>
+            </div>
+        </div>
         <template id="element-template">
             <li class="element">
                 <button type="button" class="element__trash" aria-label="Удалить"></button>
                 <img src=" " alt=" " class="element__image">
                 <div class="element__info">
                     <h2 class="element__title"></h2>
-                    <button type="button" class="element__like" aria-label="Нравится"></button>
+                    <div class="element__like-group">
+                        <button type="button" class="element__like" aria-label="Нравится"></button>
+                        <p class="element__like-sum">0</p>
+                    </div>
+                    
                 </div>
             </li>
         </template>

@@ -7,13 +7,13 @@ export default class Section {
 
     addItem(element) {
         document.querySelector(".elements__list").prepend(element);
-        console.log('test');
     }
 
-
-    renderCards(items){
-        items.forEach(({title, image })  => {
-            this._renderer({title: title, image: image});
+    renderCards(items, id){
+        items.forEach((item)  => {
+            this._renderer(item, id);
         })
     }
+
 }
+

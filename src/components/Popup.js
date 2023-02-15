@@ -1,5 +1,3 @@
-// --- КЛАСС ОТКРЫТИЯ/ЗАКРЫТИЯ ПОПАПОВ ---
-
 export default class Popup {
   constructor(popupSelector) {
     this._popupSelector = popupSelector;
@@ -18,14 +16,12 @@ export default class Popup {
     document.removeEventListener("keydown", this._handleEscClose);
   }
 
-  //функция обработки нажатия клавиши Esc для закрытия попапа
   _handleEscClose(evt) {
     if (evt.key === "Escape") {
       this.close();
     }
   }
 
-  //функция обработки клика за пределами области popup__container
   _handlePopupClick(evt) {
     if (evt.target.classList.contains("popup")) {
       this.close();
@@ -39,4 +35,3 @@ export default class Popup {
     );
   }
 }
-

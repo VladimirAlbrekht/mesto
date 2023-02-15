@@ -1,23 +1,52 @@
+import Api from "../components/Api.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import {
-  initialCards,
   config,
   popupEditProfileContainer,
   popupAddCardForm,
   buttonEditProfile,
   buttonAddNewCard,
   nameInput,
-  jobInput
+  jobInput,
+  buttonChangeAvatar,
+  popupChangeAvatar,
 } from "../utils/constants.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
+
 import "./../pages/index.css";
 
-// Включение валидации
+//добавляем экземпляр класса  Api c данными пользователя
+const api = new Api({
+  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-59",
+  headers: {
+    authorization: "4ad205f5-51c6-4198-8b11-26d3d2a06600",
+    "Content-Type": "application/json",
+  },
+});
 
+//добавляем объект UserInfo
+const userInfo = new UserInfo({
+  selectorName: ".profile__name",
+  selectorDescription: ".profile__status",
+  selectorAvatar: ".profile__avatar",
+});
+
+//создаем экземпляр класса Section
+const cardList = new Section(
+  {
+    renderer: (cardItem, id) => {
+      cardList.addItem(createCard(cardItem, id));
+    },
+  },
+  "#element-template"
+);
+
+//добавляем экземпляры класса для валидации
 const profileFormValidator = new FormValidator(
   config,
   popupEditProfileContainer
@@ -27,81 +56,167 @@ profileFormValidator.enableValidation();
 const cardFormValidator = new FormValidator(config, popupAddCardForm);
 cardFormValidator.enableValidation();
 
-//Функции
-function handleCardClick(title, image) {
-  popupWithImage.open(title, image);
-}
+const avatarFormValidator = new FormValidator(config, popupChangeAvatar);
+avatarFormValidator.enableValidation();
 
-//Функция загрузки карточки в нужный селектор
-function createCard(title, image) {
-  const cardElement = new Card(
-    title,
-    image,
-    "#element-template",
-    handleCardClick
-  );
-  return cardElement.generateCard();
-}
+//добавляем экземпляр класса модальных окон
+const popupWithConfirm = new PopupWithConfirmation("#popup-confirm");
+popupWithConfirm.setEventListeners();
 
-function renderCard({ title, image }) {
-  const card = createCard(title, image);
-  cardList.addItem(card);
-}
-
-//Создаем объект класса PopupWhithImage и навешиваем слушатели событий
 const popupWithImage = new PopupWithImage("#popup-image");
 popupWithImage.setEventListeners();
 
-const cardList = new Section(
-  {initialCards, renderer: renderCard },
-  "#element-template"
-);
-
-cardList.renderCards(initialCards);
-
-//Создаем объект UserInfo
-const userInfo = new UserInfo({
-  selectorName: ".profile__name",
-  selectorDescription: ".profile__status",
-});
-
-const handleSubmitAddCard = (values) => {
-  const imageValue = values["place-image"];
-  const titleValue = values["place-name"];
-  renderCard({ title: titleValue, image: imageValue });
-  popupFormAddCard.close();
-};
-
-//создаем объект класса PopupWhithForm для попапа (создание новой карточки)
 const popupFormAddCard = new PopupWithForm(
   ".popup_add-new-card",
-  handleSubmitAddCard
+  handlePopupAddCard
 );
 popupFormAddCard.setEventListeners();
 
-const handleSubmitProfile = (values) => {
-  const nameInput = values["popup-name"];
-  const statusInput = values["popup-job"];
-  userInfo.setUserInfo({
-    name: nameInput,
-    about: statusInput,
-  });
-  popupFormProfile.close();
-};
-
-//Создаем объект PopupWhithForm для попапа (редактирование профиля)
 const popupFormProfile = new PopupWithForm(
   ".popup_edit-profile",
-  handleSubmitProfile
+  handlePopupProfile
 );
 popupFormProfile.setEventListeners();
 
-/* Слушатели */
+const popupFormChangeAvatar = new PopupWithForm(
+  ".popup_change-avatar",
+  handlePopupChangeAvatar
+);
+popupFormChangeAvatar.setEventListeners();
 
-buttonEditProfile.addEventListener("click", function () {
-  popupFormProfile.open();
+//функция открытия карточки с картинкой
+function handleCardClick(name, link) {
+  popupWithImage.open(name, link);
+}
+
+//функция добавления новых карточек от пользователя (сабмит формы)
+function handlePopupAddCard(inputsData) {
+  const imageValue = inputsData["place-image"];
+  const titleValue = inputsData["place-name"];
+  popupFormAddCard.renderSaving(true);
+  api
+    .postNewCard(titleValue, imageValue)
+    .then((data) => {
+      cardList.addItem(createCard(data, data.owner._id));
+      popupFormAddCard.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      popupFormAddCard.renderSaving(false);
+    });
+}
+
+//функция открытия попапа с подтверждением удаления карточки
+function handleTrashClick(id, card) {
+  popupWithConfirm.setSubmitAction(() => handlePopupConfirm(id, card));
+  popupWithConfirm.open();
+}
+
+//функция удаления карточки
+function handlePopupConfirm(id, card) {
+  popupWithConfirm.renderSaving(true);
+  api
+    .deleteCardServer(id)
+    .then(() => {
+      card.deleteCardBrowser();
+      popupWithConfirm.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      popupWithConfirm.renderSaving(false);
+    });
+}
+
+// функция добавления/удаления лайка
+function handleLikeClick(id, isLiked, card) {
+  if (isLiked) {
+    api
+      .dislikedCard(id)
+      .then((data) => {
+        card.setLikes(data.likes);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  } else {
+    api
+      .likedCard(id)
+      .then((data) => {
+        card.setLikes(data.likes);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+}
+
+// функция для редактирования профиля
+function handlePopupProfile(values) {
+  popupFormProfile.renderSaving(true);
+  const nameInput = values["popup-name"];
+  const statusInput = values["popup-job"];
+  const avatar = document.querySelector(".profile__avatar").src;
+  userInfo.setUserInfo({
+    name: nameInput,
+    about: statusInput,
+    avatar: avatar,
+  });
+  api.saveUserChanges(nameInput, statusInput);
+  popupFormProfile.renderSaving(false);
+  popupFormProfile.close();
+}
+
+//функция для редактирования аватара
+function handlePopupChangeAvatar(inputsData) {
+  popupFormChangeAvatar.renderSaving(true);
+
+  api
+    .changedAvatar(inputsData)
+    .then((data) => {
+      userInfo.setUserInfo(data);
+      popupFormChangeAvatar.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      popupFormChangeAvatar.renderSaving(false);
+    });
+}
+
+//функция подгрузки в инпуты данных профиля
+function handleTextInput() {
   const userData = userInfo.getUserInfo();
-  (nameInput.value = userData.name), (jobInput.value = userData.about);
+  nameInput.value = userData.name;
+  jobInput.value = userData.about;
+}
+
+//функция создания карточек
+function createCard(dataCard, id) {
+  const card = new Card(
+    {
+      data: dataCard,
+      handleCardClick,
+      handleTrashClick,
+      handleLikeClick,
+    },
+    "#element-template",
+    id
+  );
+
+  const newCard = card.generateCard();
+
+  return newCard;
+}
+
+//добавляем слушатели событий для кнопок
+buttonEditProfile.addEventListener("click", () => {
+  popupFormProfile.open();
+  handleTextInput();
   profileFormValidator.resetForm();
 });
 
@@ -109,3 +224,18 @@ buttonAddNewCard.addEventListener("click", function () {
   popupFormAddCard.open();
   cardFormValidator.resetForm();
 });
+
+buttonChangeAvatar.addEventListener("click", function () {
+  popupFormChangeAvatar.open();
+  cardFormValidator.resetForm();
+});
+
+//добавляем Promise.all дожидаемся подгрузки данных и карточек
+Promise.all([api.getUserData(), api.getInitialCards()])
+  .then((values) => {
+    userInfo.setUserInfo(values[0]);
+    cardList.renderCards(values[1], values[0]._id);
+  })
+  .catch((err) => {
+    console.log(err);
+  });

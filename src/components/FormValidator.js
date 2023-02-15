@@ -10,7 +10,7 @@ export default class FormValidator {
     this._submitButtonSelector = config.submitButtonSelector;
     this._button = this._formSelector.querySelector(this._submitButtonSelector);
     this._inputList = Array.from(
-    this._formSelector.querySelectorAll(this._inputSelector)
+      this._formSelector.querySelectorAll(this._inputSelector)
     );
   }
 
