@@ -15,10 +15,10 @@ export default class UserInfo {
   }
   
   //Сохраняем введенные значения из инпутов в нужные поля
-  setUserInfo({name, about, avatar}) {
-    this._elementName.textContent = name;
-    this._elementDescription.textContent = about;
-    this._avatar.src = avatar;
+  setUserInfo(data) {
+    this._elementName.textContent = data.name;
+    this._elementDescription.textContent = data.about;
+    this._avatar.src = data.avatar;
   } 
 
 } 

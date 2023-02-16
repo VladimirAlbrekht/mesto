@@ -6,8 +6,8 @@ const buttonAddNewCard = document.querySelector(".profile__add-button");
 const buttonChangeAvatar = document.querySelector(".profile__change-btn");
 const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__status");
-const nameInput = document.querySelector('[name="popup-name"]');
-const jobInput = document.querySelector('[name="popup-job"]');
+const nameInput = document.querySelector('[name="name"]');
+const jobInput = document.querySelector('[name="about"]');
 const popupProfileInputs =
   popupEditProfileContainer.querySelectorAll(".popup__input");
 

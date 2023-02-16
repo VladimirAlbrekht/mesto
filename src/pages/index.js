@@ -43,7 +43,7 @@ const cardList = new Section(
       cardList.addItem(createCard(cardItem, id));
     },
   },
-  "#element-template"
+  ".elements__list"
 );
 
 //добавляем экземпляры класса для валидации
@@ -155,19 +155,21 @@ function handleLikeClick(id, isLiked, card) {
 }
 
 // функция для редактирования профиля
-function handlePopupProfile(values) {
+function handlePopupProfile(inputsData) {
   popupFormProfile.renderSaving(true);
-  const nameInput = values["popup-name"];
-  const statusInput = values["popup-job"];
-  const avatar = document.querySelector(".profile__avatar").src;
-  userInfo.setUserInfo({
-    name: nameInput,
-    about: statusInput,
-    avatar: avatar,
-  });
-  api.saveUserChanges(nameInput, statusInput);
-  popupFormProfile.renderSaving(false);
-  popupFormProfile.close();
+  console.log(inputsData);
+  api
+    .saveUserChanges(inputsData)
+    .then((data) => {
+      userInfo.setUserInfo(data);
+      popupFormProfile.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      popupFormProfile.renderSaving(false);
+    });
 }
 
 //функция для редактирования аватара
@@ -234,7 +236,7 @@ buttonChangeAvatar.addEventListener("click", function () {
 Promise.all([api.getUserData(), api.getInitialCards()])
   .then((values) => {
     userInfo.setUserInfo(values[0]);
-    cardList.renderCards(values[1], values[0]._id);
+    cardList.renderCards(values[1].reverse(), values[0]._id);
   })
   .catch((err) => {
     console.log(err);

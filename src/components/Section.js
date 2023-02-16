@@ -6,7 +6,7 @@ export default class Section {
     }
 
     addItem(element) {
-        document.querySelector(".elements__list").prepend(element);
+       this._container.prepend(element);
     }
 
     renderCards(items, id){
