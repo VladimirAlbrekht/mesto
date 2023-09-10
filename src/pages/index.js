@@ -95,7 +95,7 @@ function handlePopupAddCard(inputsData) {
   const titleValue = inputsData["place-name"];
   popupFormAddCard.renderSaving(true);
   api
-    .postNewCard(titleValue, imageValue)
+    .postNewCard({name:titleValue, link:imageValue})
     .then((data) => {
       cardList.addItem(createCard(data, data.owner._id));
       popupFormAddCard.close();
