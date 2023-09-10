@@ -8,7 +8,7 @@
 
 | Desktop | Mobile |
 |-------------|-------------|
-|![Скриншот desktop версии сайта ](./../images/mesto-screen-desktop-version.png)|![Скриншот мобильной версии сайта](./../images/mesto-screen-mobile-version.png)|
+|![Скриншот desktop версии сайта ](./mesto-screen-desktop-version.png)|![Скриншот мобильной версии сайта](./mesto-screen-mobile-version.png)|
 
 ## Основной функционал
 
